@@ -74,7 +74,7 @@ export default api => {
                     return;
                   }
                   ele.href = ele.href.replace('${INSET_REPO_URL}', '')
-                    .replace('\/edit\/master', '/edit/${branch}/docs')
+                    .replace('\/edit\/master', '/edit/${branch}')
                 });
             }, 300);
           }
