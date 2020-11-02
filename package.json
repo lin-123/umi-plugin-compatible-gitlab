@@ -1,6 +1,7 @@
 {
   "name": "umi-plugin-compatible-gitlab",
   "main": "lib/index.js",
+  "version": "0.1.0",
   "description": "兼容内网部署的gitlab",
   "authors": {
     "name": "",
