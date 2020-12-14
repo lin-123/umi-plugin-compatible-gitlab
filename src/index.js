@@ -14,10 +14,7 @@ export default api => {
     }
     api.pkg.repository.url = getRepoUrl(repository.url);
   });
-  // api.modifyConfig((memo) => {
-  //   console.log('config', memo)
-  //   return memo;
-  // });
+
   /**
    * 解决两个问题：
    *  1. 将 git.jdssqwhjtyrikss.gitlab.com 恢复成 git.jd.com
@@ -48,7 +45,6 @@ export default api => {
     return [
       {
         content: `
-        console.log('replace git');
         (function() {
           function registerHrefEvent() {
             var _wr = function(type) {
@@ -66,6 +62,9 @@ export default api => {
           }
 
           function restoreRepoUrl() {
+            if (window.DEBUG_UMI_PLUGIN_COMPATIBLE_GITLAB) {
+              console.log('restore repo url');
+            }
             setTimeout(function () {
               document.querySelectorAll('a[target=_blank]')
                 .forEach(function(ele) {
@@ -81,14 +80,9 @@ export default api => {
 
           registerHrefEvent();
           restoreRepoUrl();
-          window.addEventListener('replaceState', function(e) {
-            restoreRepoUrl();
-            console.log('THEY DID IT AGAIN! replaceState 111111');
-          });
-          window.addEventListener('pushState', function(e) {
-            restoreRepoUrl();
-            console.log('THEY DID IT AGAIN! pushState 2222222');
-          });
+          window.addEventListener('replaceState', restoreRepoUrl);
+          window.addEventListener('pushState', restoreRepoUrl);
+          window.addEventListener('hashchange', restoreRepoUrl)
         })();
       `,
       },

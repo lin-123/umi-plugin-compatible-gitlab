@@ -19,15 +19,15 @@ $ npm run start
 
 ## Usage
 
-Configure in `.umirc.js`,
-
-```js
-export default {
-  plugins: [
-    ['umi-plugin-compatible-gitlab'],
-  ],
-}
-```
+- npm install -D umi-plugin-compatible-gitlab
+- Configure in `.umirc.js`,
+    ```js
+    export default {
+      plugins: [
+        ['umi-plugin-compatible-gitlab'],
+      ],
+    }
+    ```
 
 ## Options
 

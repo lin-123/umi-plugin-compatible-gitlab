@@ -6,3 +6,5 @@ export default () => (
     Hello Umi!
   </div>
 );
+
+window.DEBUG_UMI_PLUGIN_COMPATIBLE_GITLAB = true;
